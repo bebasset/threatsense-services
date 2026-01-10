@@ -210,10 +210,18 @@
       gap: 12px;
       margin-bottom: 14px;
     }
-    /* Fix anchor jump with sticky nav: keeps section titles visible */
-    :root { --nav-offset: 84px; } /* adjust if you change nav height */
+  /* Fix anchor jump with sticky nav (desktop + mobile) */
+  :root { --nav-offset: 84px; }  /* desktop */
 
-    section { scroll-margin-top: var(--nav-offset); }
+@media (max-width: 980px) {
+  :root { --nav-offset: 132px; } /* mobile nav wraps -> taller */
+}
+
+  section {
+    scroll-margin-top: var(--nav-offset);
+  }
+
+
     /* Highlight the targeted section when navigating via #hash links */
     section:target h2 {
     font-weight: 800;
