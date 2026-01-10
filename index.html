@@ -210,6 +210,11 @@
       gap: 12px;
       margin-bottom: 14px;
     }
+    /* Fix anchor jump with sticky nav: keeps section titles visible */
+    :root { --nav-offset: 84px; } /* adjust if you change nav height */
+
+    section { scroll-margin-top: var(--nav-offset); }
+
     h2{
       margin: 0;
       font-size: 1.5rem;
