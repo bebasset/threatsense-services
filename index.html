@@ -214,6 +214,16 @@
     :root { --nav-offset: 84px; } /* adjust if you change nav height */
 
     section { scroll-margin-top: var(--nav-offset); }
+    /* Highlight the targeted section when navigating via #hash links */
+    section:target h2 {
+    font-weight: 800;
+    }
+    section:target .section-head {
+    outline: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.03);
+    border-radius: 16px;
+    padding: 10px 12px;
+    }
 
     h2{
       margin: 0;
