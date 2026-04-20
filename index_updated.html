@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ThreatSense Solutions — Penetration Testing as a Service. Authorized, scoped testing for networks, web applications, and APIs with evidence-driven reporting and remediation guidance." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ThreatSense Solutions — Penetration Testing as a Service" />
+  <meta property="og:description" content="Authorized penetration testing for networks, web applications, and APIs. Evidence-driven reporting and practical remediation guidance." />
+  <meta property="og:type" content="website" />
+
+  <title>ThreatSense Solutions — Penetration Testing as a Service</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg: #070A12;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.08);
+      --border: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --muted2: rgba(255,255,255,.55);
+
+      --a: #7C3AED;   /* violet */
+      --b: #22C55E;   /* green */
+      --c: #06B6D4;   /* cyan */
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+      --radius2: 24px;
+      --max: 1120px;
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ margin:0; padding:0; }
+    body{
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 700px at 15% 10%, rgba(124,58,237,.25), transparent 55%),
+        radial-gradient(900px 600px at 85% 20%, rgba(6,182,212,.18), transparent 55%),
+        radial-gradient(900px 600px at 55% 85%, rgba(34,197,94,.14), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ opacity: .92; }
+
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 18px; }
+
+    /* NAV */
+    .nav{
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(7,10,18,.72);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px;
+    }
+    .dot{
+      width:12px; height:12px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--a), var(--c));
+      box-shadow: 0 0 0 4px rgba(124,58,237,.18);
+    }
+    .nav-links{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+    .nav-links a{
+      font-size: .92rem;
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+    }
+    .nav-links a:hover{
+      color: var(--text);
+      border-color: rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+
+    /* HERO */
+    .hero{
+      padding: 56px 0 28px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+    }
+
+    .eyebrow{
+      display:flex; align-items:center; gap:10px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+    .eyebrow .line{
+      width: 36px; height: 2px;
+      background: linear-gradient(90deg, var(--a), var(--c));
+      border-radius: 99px;
+      opacity: .9;
+    }
+    h1{
+      margin: 12px 0 10px;
+      font-size: clamp(2.1rem, 4vw, 3.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+    }
+    h1 span{
+      background: linear-gradient(135deg, var(--a), var(--c));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .sub{
+      color: var(--muted);
+      font-size: 1.02rem;
+      margin: 0 0 18px;
+    }
+
+    .chips{ display:flex; flex-wrap:wrap; gap:10px; margin: 14px 0 18px; }
+    .chip{
+      font-size: .86rem;
+      color: rgba(255,255,255,.82);
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+
+    .cta{
+      display:flex; gap:12px; flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-weight: 600;
+      box-shadow: none;
+    }
+    .btn:hover{ background: rgba(255,255,255,.08); }
+    .btn.primary{
+      border-color: rgba(124,58,237,.55);
+      background: linear-gradient(135deg, rgba(124,58,237,.95), rgba(6,182,212,.75));
+      box-shadow: 0 20px 65px rgba(124,58,237,.22);
+    }
+    .btn.primary:hover{ opacity: .96; }
+    .btn small{ color: rgba(255,255,255,.86); font-weight: 600; }
+
+    /* SIDE CARD */
+    .card{
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .card-top{
+      padding: 16px 16px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+      display:flex; justify-content:space-between; gap:10px; align-items:flex-start;
+    }
+    .pill{
+      font-size: .78rem;
+      color: rgba(255,255,255,.88);
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      white-space: nowrap;
+    }
+    .card-title{ font-weight: 700; margin: 0; }
+    .card-sub{ margin: 6px 0 0; color: var(--muted2); font-size: .92rem; }
+
+    .card-body{ padding: 16px; }
+    .list{
+      margin: 0; padding-left: 18px;
+      color: rgba(255,255,255,.84);
+    }
+    .list li{ margin: 10px 0; }
+    .micro{
+      margin-top: 14px;
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    /* SECTIONS */
+    section{ padding: 34px 0; }
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+  /* Fix anchor jump with sticky nav (desktop + mobile) */
+  :root { --nav-offset: 84px; }  /* desktop */
+
+@media (max-width: 980px) {
+  :root { --nav-offset: 132px; } /* mobile nav wraps -> taller */
+}
+
+  section {
+    scroll-margin-top: var(--nav-offset);
+  }
+
+
+    /* Highlight the targeted section when navigating via #hash links */
+    section:target h2 {
+    font-weight: 800;
+    }
+    section:target .section-head {
+    outline: 1px solid rgba(255,255,255,.14);
+    background: rgba(255,255,255,.03);
+    border-radius: 16px;
+    padding: 10px 12px;
+    }
+
+    h2{
+      margin: 0;
+      font-size: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+    .lead{ margin: 0; color: var(--muted); max-width: 72ch; }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 980px){ .grid3{ grid-template-columns: 1fr; } }
+
+    .svc{
+      padding: 16px;
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+    }
+    .svc h3{ margin: 0 0 8px; font-size: 1.05rem; }
+    .svc p{ margin: 0; color: var(--muted); }
+    .svc .tags{ margin-top: 12px; display:flex; flex-wrap:wrap; gap: 8px; }
+    .tag{
+      font-size: .78rem;
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      color: rgba(255,255,255,.82);
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 980px){ .steps{ grid-template-columns: 1fr; } }
+
+    .step{
+      padding: 16px;
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+    }
+    .step strong{
+      display:inline-block;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(124,58,237,.18);
+      border: 1px solid rgba(124,58,237,.35);
+      margin-bottom: 10px;
+      font-size: .82rem;
+    }
+    .step p{ margin: 0; color: var(--muted); }
+
+    .price-row{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 980px){ .price-row{ grid-template-columns: 1fr; } }
+
+    .price{
+      padding: 18px;
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      position: relative;
+      overflow:hidden;
+    }
+    .price.pop{
+      border-color: rgba(6,182,212,.35);
+      background: linear-gradient(180deg, rgba(6,182,212,.12), rgba(255,255,255,.05));
+    }
+    .price h3{ margin: 0 0 6px; }
+    .price .from{ color: rgba(255,255,255,.86); font-weight: 700; font-size: 1.15rem; margin: 0 0 10px; }
+    .price ul{ margin: 0; padding-left: 18px; color: var(--muted); }
+    .price li{ margin: 8px 0; }
+
+    .faq{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 980px){ .faq{ grid-template-columns: 1fr; } }
+    details{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      padding: 14px 16px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight: 700;
+      color: rgba(255,255,255,.9);
+    }
+    details p{ color: var(--muted); margin: 10px 0 0; }
+
+    /* CONTACT */
+    .contact{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
+    }
+    @media (max-width: 980px){ .contact{ grid-template-columns: 1fr; } }
+    .contact-box{
+      padding: 18px;
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+    }
+    .contact-box p{ color: var(--muted); margin: 8px 0 0; }
+    .contact-actions{ margin-top: 14px; display:flex; flex-wrap:wrap; gap: 10px; }
+
+    /* FOOTER */
+    .foot{
+      padding: 22px 0 30px;
+      color: var(--muted2);
+      border-top: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.12);
+      margin-top: 34px;
+    }
+    .foot-row{
+      display:flex; justify-content:space-between; align-items:center; gap: 12px;
+      flex-wrap:wrap;
+    }
+    .mini-links{ display:flex; gap: 10px; flex-wrap:wrap; }
+    .mini-links a{
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.86);
+      font-size: .9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand">
+        <div class="dot"></div>
+        <span>ThreatSense Solutions</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#baseline">Baseline</a>
+        <a href="#ptaas">PTaaS</a>
+        <a href="#process">Process</a>
+        <a href="#deliverables">Deliverables</a>
+        <a href="#why">Why</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a href="https://bebasset.github.io/index.html#projects" target="_blank" rel="noopener">Portfolio ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">
+          <div class="line"></div>
+          <div>ThreatSenseSolutions.com · Authorized Testing Only</div>
+        </div>
+
+        <h1>Penetration Testing <span>as a Service</span></h1>
+        <p class="sub">
+          Network, Web Application, and API penetration testing with <strong>evidence-driven reporting</strong> and
+          <strong>practical remediation guidance</strong>.
+          <br />
+          <span style="color: var(--muted2);">Driven to secure the digital world by understanding threats before they strike.</span>
+        </p>
+
+        <div class="chips">
+          <span class="chip">Network</span>
+          <span class="chip">Web Apps</span>
+          <span class="chip">APIs</span>
+          <span class="chip">OWASP-aligned</span>
+          <span class="chip">Authorization required</span>
+        </div>
+
+        <div class="cta">
+          <a class="btn primary" href="mailto:bassette.secure@gmail.com?subject=ThreatSense%20-%20Request%20Scope%20%26%20Quote&body=Hi%20ThreatSense%2C%0A%0AI'd%20like%20to%20request%20a%20scope%20and%20quote.%0A%0ACompany%3A%0AAsset(s)%3A%0ATesting%20type%20(Network%2FWeb%2FAPI)%3A%0ATimeframe%3A%0AConstraints%2FNotes%3A%0A%0AThanks%2C">
+            Request Scope & Quote <small>↗</small>
+          </a>
+          <a class="btn" href="#process">How it works</a>
+          <a class="btn" href="https://www.linkedin.com/in/belizaireb" target="_blank" rel="noopener">LinkedIn ↗</a>
+        </div>
+      </div>
+
+      <aside class="card" aria-label="What you get">
+        <div class="card-top">
+          <div>
+            <div class="card-title">What you get</div>
+            <div class="card-sub">Clear outcomes, clean reporting, and actionable remediation.</div>
+          </div>
+          <div class="pill">Evidence-driven</div>
+        </div>
+
+        <div class="card-body">
+          <ul class="list">
+            <li><strong>Scoped testing</strong> aligned to business risk (not tool-spam).</li>
+            <li><strong>Reproduction s</strong> + request/response evidence when applicable.</li>
+            <li><strong>Severity + impact</strong> explained in plain language.</li>
+            <li><strong>Remediation guidance</strong> prioritized for your engineering team.</li>
+          </ul>
+
+          <div class="micro">
+            <strong>Ethical note:</strong> Testing is performed only with explicit written authorization and an agreed scope / rules of engagement.
+          </div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Services</h2>
+          <p class="lead">Scopable engagements for teams that need real validation, clear evidence, and fixes that stick.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="svc">
+          <h3>Network Penetration Testing</h3>
+          <p><strong>Focus:</strong> attack surface mapping, service enumeration, vulnerability validation, segmentation review, and practical remediation.</p>
+          <div class="tags">
+            <span class="tag">External</span><span class="tag">Internal</span><span class="tag">Enumeration</span><span class="tag">Validation</span><span class="tag">Hardening</span>
+          </div>
+        </div>
+
+        <div class="svc">
+          <h3>Web Application Penetration Testing</h3>
+          <p><strong>Focus:</strong> authentication, session management, access control, input validation, misconfigurations, and business logic abuse.</p>
+          <div class="tags">
+            <span class="tag">OWASP</span><span class="tag">Auth/Session</span><span class="tag">Access Control</span><span class="tag">Burp Suite</span>
+          </div>
+        </div>
+
+        <div class="svc">
+          <h3>API Penetration Testing</h3>
+          <p><strong>Focus:</strong> BOLA/IDOR, broken auth, token handling, mass assignment, rate limiting, and excessive data exposure.</p>
+          <div class="tags">
+            <span class="tag">REST</span><span class="tag">GraphQL</span><span class="tag">BOLA/IDOR</span><span class="tag">Tokens</span><span class="tag">Rate Limits</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Process</h2>
+          <p class="lead">Simple, professional, and predictable — from kickoff to retest.</p>
+        </div>
+      </div>
+
+      <div class="s">
+        <div class="step">
+          <strong>1) Scope &amp; Rules of Engagement</strong>
+          <p>We collaborate to define in-scope assets, authentication needs, timelines, and testing constraints.
+    I then provide a written Scope &amp; Rules of Engagement for approval before any testing begins.</p>
+      </div>
+
+        <div class="step">
+          <strong>2) Recon & Validation</strong>
+          <p>Attack surface mapping + manual validation to confirm real impact (reduces false positives and focuses on what matters).</p>
+        </div>
+        <div class="step">
+          <strong>3) Exploitation (Authorized)</strong>
+          <p>Controlled exploitation to demonstrate risk safely and gather evidence. No destructive testing unless explicitly approved.</p>
+        </div>
+        <div class="step">
+          <strong>4) Reporting & Remediation</strong>
+          <p>Professional report: executive summary + technical findings, reproduction steps, evidence, severity, and fix guidance.</p>
+        </div>
+      </div>
+
+      <div class="cta" style="margin-top:16px;">
+        <a class="btn primary" href="mailto:bassette.secure@gmail.com?subject=ThreatSense%20-%20Request%20Scope%20%26%20Quote">Request Scope & Quote <small>↗</small></a>
+        <a class="btn" href="#deliverables">See deliverables</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DELIVERABLES -->
+  <section id="deliverables">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Deliverables</h2>
+          <p class="lead">Reports built to be read by both leadership and engineers.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="svc">
+          <h3>Executive Summary</h3>
+          <p>Risk overview, business impact, and prioritized next steps — written for decision-makers.</p>
+        </div>
+        <div class="svc">
+          <h3>Technical Findings</h3>
+          <p>Clear reproduction steps, evidence, affected components, severity, and “how it breaks” explanations.</p>
+        </div>
+        <div class="svc">
+          <h3>Remediation Guidance</h3>
+          <p>Actionable fixes + verification notes so your team can close issues efficiently and confidently.</p>
+        </div>
+      </div>
+
+      <div class="micro" style="margin-top:14px;">
+        Retesting can be included when scope permits (to confirm fixes and reduce rework).
+      </div>
+    </div>
+  </section>
+
+  <!-- BASELINE -->
+  <section id="baseline">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Security Baseline Assessment</h2>
+          <p class="lead">A complimentary, focused assessment designed to identify real risk within your environment.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="svc">
+          <h3>Focused Scope</h3>
+          <p>We test one asset — either your primary web application or an external network — to deliver meaningful results.</p>
+        </div>
+        <div class="svc">
+          <h3>Real Vulnerabilities</h3>
+          <p>Identification of exploitable vulnerabilities supported by evidence, not automated scanner noise.</p>
+        </div>
+        <div class="svc">
+          <h3>Executive‑Level Summary</h3>
+          <p>Risk overview and high‑level remediation guidance written for leadership and engineers alike.</p>
+        </div>
+      </div>
+
+      <div class="micro" style="margin-top:14px;">
+        This assessment demonstrates real exposure and provides direction for a full engagement. It is not a full penetration test.
+      </div>
+
+      <div class="cta" style="margin-top:16px;">
+        <a class="btn primary" href="#contact">Request Your Free Assessment <small>↗</small></a>
+        <a class="btn" href="#ptaas">Explore Continuous Testing</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PTaaS -->
+  <section id="ptaas">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Continuous Security Testing (PTaaS)</h2>
+          <p class="lead">Ongoing, attacker‑driven testing to continuously identify and validate risk as your environment evolves.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="svc">
+          <h3>Continuous Discovery</h3>
+          <p>Active testing across your assets to uncover new vulnerabilities and validate changes as they roll out.</p>
+        </div>
+        <div class="svc">
+          <h3>Retesting & Validation</h3>
+          <p>We re‑test after remediation to verify fixes and help your team close issues efficiently.</p>
+        </div>
+        <div class="svc">
+          <h3>Priority Support</h3>
+          <p>Direct communication with your tester and, soon, access to a reporting portal for ongoing visibility.</p>
+        </div>
+      </div>
+
+      <div class="cta" style="margin-top:16px;">
+        <a class="btn primary" href="#contact">Schedule a Consultation <small>↗</small></a>
+        <a class="btn" href="#why">Why ThreatSense</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="why">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Why ThreatSense</h2>
+          <p class="lead">We don’t just list vulnerabilities — we show you how attackers would breach your systems and what that means for your business.</p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="svc">
+          <h3>Attack Path Simulation</h3>
+          <p>We map how vulnerabilities chain together across your environment to demonstrate real‑world attack scenarios.</p>
+        </div>
+        <div class="svc">
+          <h3>Business Impact Focus</h3>
+          <p>Reports translate technical findings into clear risk and prioritization for stakeholders at all levels.</p>
+        </div>
+        <div class="svc">
+          <h3>Practitioner‑Led</h3>
+          <p>Founder‑led, ethical testing with a mix of manual techniques and targeted automation.</p>
+        </div>
+      </div>
+
+      <div class="cta" style="margin-top:16px;">
+        <a class="btn primary" href="#contact">Start a Conversation <small>↗</small></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>FAQ</h2>
+          <p class="lead">Quick answers to common questions.</p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>Do you require authorization?</summary>
+          <p>Yes. I only test assets with explicit written authorization and an agreed scope / rules of engagement.</p>
+        </details>
+
+        <details>
+          <summary>Can you sign an NDA?</summary>
+          <p>Yes. NDA and rules-of-engagement documentation are welcome for scoped engagements.</p>
+        </details>
+
+        <details>
+          <summary>Do you only run automated scanners?</summary>
+          <p>No. Testing is a mix of recon, manual validation, and controlled exploitation (authorized) to confirm real impact and reduce false positives.</p>
+        </details>
+
+        <details>
+          <summary>Do you provide retesting?</summary>
+          <p>When scope permits, yes — retesting can confirm fixes and help close findings faster.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Contact</h2>
+          <p class="lead">Send your scope and timeframe — I’ll reply with clarifying questions and a quote.</p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div class="contact-box">
+          <h3 style="margin:0 0 6px;">Request Scope</h3>
+          <p>Include: company name, target assets, desired test type (Network/Web/API), authentication needs, and preferred timeframe.</p>
+          <div class="contact-actions">
+            <a class="btn primary" href="mailto:bassette.secure@gmail.com?subject=ThreatSense%20-%20Request%20Scope%20%26%20Quote&body=Company%3A%0AAsset(s)%3A%0ATesting%20type%20(Network%2FWeb%2FAPI)%3A%0AAuth%20Available%3F%20(Yes%2FNo)%3A%0ATimeframe%3A%0AConstraints%2FNotes%3A%0A">Email for a quote <small>↗</small></a>
+            <a class="btn" href="https://www.linkedin.com/in/belizaireb" target="_blank" rel="noopener">Message on LinkedIn ↗</a>
+          </div>
+
+          <div class="micro">
+            <strong>Legal & ethical:</strong> No testing outside of explicit authorization. If you’re unsure what to authorize, ask — I’ll help you scope safely.
+          </div>
+        </div>
+
+        <div class="contact-box">
+          <h3 style="margin:0 0 6px;">Founder-led</h3>
+          <p>
+            ThreatSense Solutions is a focused, practitioner-led service delivering scoped penetration testing with clear reporting and remediation guidance.
+          </p>
+          <p style="margin-top:10px;color:var(--muted2);">
+            Prefer a call? We can meet via Zoom or Google Meet to discuss your environment and proposal details.
+          </p>
+          <div class="contact-actions">
+            <a class="btn" href="https://bebasset.github.io/index.html#projects" target="_blank" rel="noopener">View technical work ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <div class="wrap foot-row">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div class="dot"></div>
+        <div>
+          <div style="font-weight:700;color:rgba(255,255,255,.88);">ThreatSense Solutions</div>
+          <div style="font-size:.9rem;">Authorized testing only · Evidence-driven reporting</div>
+        </div>
+      </div>
+
+      <div class="mini-links">
+        <a href="#services">Services</a>
+        <a href="#baseline">Baseline</a>
+        <a href="#ptaas">PTaaS</a>
+        <a href="#why">Why</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+        <a href="https://bebasset.github.io/index.html#projects" target="_blank" rel="noopener">Portfolio ↗</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
+</html>
+
