@@ -369,6 +369,110 @@
       color: rgba(255,255,255,.86);
       font-size: .9rem;
     }
+
+    /* CASE STUDIES */
+    .case-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 980px){ .case-grid{ grid-template-columns: 1fr; } }
+
+    .case{
+      padding: 20px;
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .case-header{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .case-industry{
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+    .case-scope{
+      font-size: .78rem;
+      color: rgba(255,255,255,.88);
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      white-space: nowrap;
+    }
+    .case-findings{
+      padding: 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .case-findings p{
+      margin: 0;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+    .case-findings strong{
+      color: var(--text);
+    }
+    .case-stat-row{
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .case-stat{
+      flex: 1;
+      min-width: 100px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(124,58,237,.08);
+      border: 1px solid rgba(124,58,237,.22);
+      text-align: center;
+    }
+    .case-stat .num{
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+    .case-stat .label{
+      font-size: .75rem;
+      color: var(--muted2);
+      margin-top: 2px;
+    }
+    .case-outcome{
+      color: var(--muted);
+      font-size: .92rem;
+      margin: 0;
+    }
+    .case-outcome strong{
+      color: var(--b);
+    }
+    .case-quote{
+      border-left: 3px solid;
+      border-image: linear-gradient(180deg, var(--a), var(--c)) 1;
+      padding-left: 14px;
+      color: rgba(255,255,255,.78);
+      font-size: .9rem;
+      font-style: italic;
+    }
+    .case-quote cite{
+      display: block;
+      margin-top: 6px;
+      font-style: normal;
+      font-size: .8rem;
+      color: var(--muted2);
+    }
+    .case-note{
+      text-align: center;
+      color: var(--muted2);
+      font-size: .88rem;
+      margin-top: 8px;
+    }
   </style>
 </head>
 
@@ -388,6 +492,7 @@
         <a href="#process">Process</a>
         <a href="#deliverables">Deliverables</a>
         <a href="#why">Why</a>
+        <a href="#results">Results</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
         <a href="https://bebasset.github.io/index.html#projects" target="_blank" rel="noopener">Portfolio ↗</a>
@@ -660,6 +765,61 @@
     </div>
   </section>
 
+  <!-- CASE STUDIES -->
+  <section id="results">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Engagement Outcomes</h2>
+          <p class="lead">Anonymized summaries from completed assessments. Client details withheld — references available on request.</p>
+        </div>
+      </div>
+
+      <!--
+        TEMPLATE: Copy a block below into the case-grid div for each new engagement.
+        Replace the placeholder values with real anonymized data.
+
+        <div class="case">
+          <div class="case-header">
+            <span class="case-industry">INDUSTRY NAME</span>
+            <span class="case-scope">SCOPE TYPE</span>
+          </div>
+          <div class="case-stat-row">
+            <div class="case-stat">
+              <div class="num">0</div>
+              <div class="label">Vulnerabilities</div>
+            </div>
+            <div class="case-stat">
+              <div class="num">0</div>
+              <div class="label">Critical</div>
+            </div>
+            <div class="case-stat">
+              <div class="num">— days</div>
+              <div class="label">To Remediation</div>
+            </div>
+          </div>
+          <div class="case-findings">
+            <p><strong>Key findings:</strong> Brief anonymized summary of what was found.</p>
+          </div>
+          <p class="case-outcome"><strong>Outcome:</strong> What happened after the report was delivered.</p>
+          <div class="case-quote">
+            "Client quote here."
+            <cite>— Role, Industry</cite>
+          </div>
+        </div>
+      -->
+
+      <div class="case-grid">
+      </div>
+
+      <div class="micro" style="text-align:center; padding:28px 20px;">
+        <p style="margin:0 0 6px; color: var(--text); font-weight:600;">Engagement summaries will appear here as assessments are completed.</p>
+        <p style="margin:0; color: var(--muted2);">Client details are always anonymized. <a href="#contact" style="color: var(--c);">Contact us</a> to discuss your environment or request references.</p>
+      </div>
+
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section id="faq">
     <div class="wrap">
@@ -750,6 +910,7 @@
         <a href="#baseline">Baseline</a>
         <a href="#ptaas">PTaaS</a>
         <a href="#why">Why</a>
+        <a href="#results">Results</a>
         <a href="#process">Process</a>
         <a href="#contact">Contact</a>
         <a href="https://bebasset.github.io/index.html#projects" target="_blank" rel="noopener">Portfolio ↗</a>
